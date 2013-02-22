@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<software>
+  <metadata>
+    <name>NXC CMIS Server extension</name>
+    <version>1.0 beta</version>
+    <copyright>Copyright (C) 1999-2011 NXC AS</copyright>
+    <license>GNU General Public License v2.0</license>
+  </metadata>
+</software>

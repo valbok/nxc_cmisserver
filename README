@@ -1,0 +1,97 @@
+NXC CMIS Server extension
+========================
+
+This extension provides possibility to use data from eZ Publish via CMIS v1.0.
+Main point is to store some documents like files or images in eZ Publish but to use it from other frameworks, like Alfresco or Nuxeo.
+
+It supports multiple repositories.
+
+------------------------
+| ATOM RESTful binding |
+------------------------
+
+Supported services
+==================
+
+* Repository AtomPub Service Document (getRepositoryInfo)
+  GET /cmis/api/repository
+
+  Returns information about the CMIS repository and the capabilities it supports.
+
+* Retrieve list of children (getChildren)
+  GET /cmis/api/children?repositoryId={repositoryId}&folderId={folderId}&skipCount={skipCount}&maxItems={maxItems}
+
+  Gets the list of child objects contained in the specified folder.
+  Only the filter-selected properties associated with each object are returned. The content-streams of documents are not returned.
+
+* Retrieve tree of descendants (getDescendants)
+  GET /cmis/api/descendants?repositoryId={repositoryId}&folderId={folderId}&depth={depth}
+
+  Gets the list of descendant objects contained at one or more levels in the tree rooted at the specified folder.
+  Only the filter-selected properties associated with each object are returned. The content-stream is not returned.
+
+* Retrieve properties (getProperties)
+  GET /cmis/api/node?repositoryId={repositoryId}&objectId={objectId}
+
+  Returns the properties of an object, and optionally the operations that the user is allowed to perform on the object.
+
+* Update properties (updateProperties)
+  PUT /cmis/api/node?repositoryId={repositoryId}&objectId={objectId}
+
+  Updates properties of the specified object. As per the data model, content-streams are not properties.
+
+* Retrieve Parent Folder (getFolderParent)
+  GET /cmis/api/parent?repositoryId={repositoryId}&folderId={folderId}&filter={filter}&returnToRoot={returnToRoot}
+
+  Returns the parent folder object, and optionally all ancestor folder objects, above a specified folder object.
+
+* Retrieve Parent Folders (getObjectParents)
+  GET /cmis/api/parents?repositoryId={repositoryId}&objectId={objectId}
+
+  Returns the parent folders for the specified non-folder, fileable object.
+
+* Retrieve a Type (getTypeDefinition)
+  GET /cmis/api/type?repositoryId={repositoryId}&typeId={typeId}
+
+  Gets the definition for specified object type.
+
+* Retrieve list of all Types (getTypeDescendants)
+  GET /cmis/api/type?repositoryId={repositoryId}&typeId={typeId}&depth={depth}
+
+  Returns the list of all types in the repository.
+
+* Content Retrieval (getContentStream)
+  GET /cmis/api/content?repositoryId={repositoryId}&objectId={objectId}
+
+  Returns the content-stream for a document. This is the only service that returns content-stream.
+
+* Content Write (setContentStream)
+  PUT /cmis/api/content?repositoryId={repositoryId}&documentId={documentId}&overwriteFlag={overwriteFlag}
+
+  Sets content stream to specified document.
+
+* Content Delete (deleteContentStream)
+  DELETE /cmis/api/content?repositoryId={repositoryId}&documentId={documentId}
+
+  Removes content stream of specified object.
+
+* Create folder or document (createDocument, createFolder)
+  POST /cmis/api/children?repositoryId={repositoryId}&folderId={folderId}
+
+  Creates an object of the specified type.
+
+* Delete tree (deleteTree)
+  DELETE /cmis/api/descendants?repositoryId={repositoryId}&folderId={folderId}
+
+  Deletes the tree rooted at specified folder (including that folder).
+
+* Delete item (deleteObject)
+  DELETE /cmis/api/content?repositoryId={repositoryId}&objectId={objectId}
+
+  Deletes specified object.
+
+----------------
+| SOAP binding |
+----------------
+
+Not supported yet.
